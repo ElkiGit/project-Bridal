@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridalSalon", "BridalSalon\BridalSalon.csproj", "{DBC20BC1-466C-4EB7-924A-510EE0513F33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridalSalon", "BridalSalon\BridalSalon.csproj", "{DBC20BC1-466C-4EB7-924A-510EE0513F33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridal.Core", "Bridal.Core\Bridal.Core.csproj", "{566EE1D8-6FAF-492E-A3F2-E4C018DAFD22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridal.Data", "Bridal.Data\Bridal.Data.csproj", "{616794B2-F77A-4AB5-9D4F-3EF6F77B15B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridal.Service", "Bridal.Service\Bridal.Service.csproj", "{2498332C-F12C-4DD6-B9C6-7AB28F0801B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DBC20BC1-466C-4EB7-924A-510EE0513F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC20BC1-466C-4EB7-924A-510EE0513F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC20BC1-466C-4EB7-924A-510EE0513F33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566EE1D8-6FAF-492E-A3F2-E4C018DAFD22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566EE1D8-6FAF-492E-A3F2-E4C018DAFD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566EE1D8-6FAF-492E-A3F2-E4C018DAFD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566EE1D8-6FAF-492E-A3F2-E4C018DAFD22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{616794B2-F77A-4AB5-9D4F-3EF6F77B15B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{616794B2-F77A-4AB5-9D4F-3EF6F77B15B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{616794B2-F77A-4AB5-9D4F-3EF6F77B15B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{616794B2-F77A-4AB5-9D4F-3EF6F77B15B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2498332C-F12C-4DD6-B9C6-7AB28F0801B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2498332C-F12C-4DD6-B9C6-7AB28F0801B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2498332C-F12C-4DD6-B9C6-7AB28F0801B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2498332C-F12C-4DD6-B9C6-7AB28F0801B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
