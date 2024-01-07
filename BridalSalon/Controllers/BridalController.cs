@@ -1,4 +1,5 @@
-﻿using BridalSalon.Entities;
+﻿using Bridal.Core.Entities;
+using Bridal.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -10,68 +11,63 @@ namespace BridalSalon.Controllers
     [ApiController]
     public class BridalController : ControllerBase
     {
-        //public static List<Bridal> bridals = new List<Bridal> { };
-        private static List<Bridal> bridals = new List<Bridal> {  };
-        
+        private readonly IBridalServices _BridalService;
+
+        public BridalController(IBridalServices BridalService)
+        {
+            _BridalService = BridalService;
+        }
         // GET: api/<BridalController>
         [HttpGet]
-        public IEnumerable<Bridal> Get()
+        public IActionResult Get()
         {
-            return bridals;
+            return Ok(_BridalService.GetBridals());
         }
 
         // GET api/<BridalController>/5
         [HttpGet("{id}")]
-        public Bridal Get(int id)
+        public IActionResult Get(int id)
         {
-            return bridals.Find(bri=>bri.Id==id);
+            var bridal = _BridalService.GetById(id);
+            if (bridal is null)
+            {
+                return NotFound();
+            }
+            return Ok(bridal);
         }
-     
+
 
         // POST api/<BridalController>
         [HttpPost]
-        public void Post([FromBody] Bridal value)
+        public IActionResult Post([FromBody] BridalClass value)
         {
-            bridals.Add(value);
+            return Ok(_BridalService.AddBridal(value));
         }
 
         // PUT api/<BridalController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Bridal value)
+        public IActionResult Put(int id, [FromBody] BridalClass value)
         {
-            Bridal bridal = bridals.Find(bri => bri.Id == id);
-            if (bridal != null)
-            {
-                bridal.Name=value.Name;
-                bridal.Phone=value.Phone;
-            }
+            return Ok(_BridalService.UpdateBridal(id, value));
         }
         [HttpPut("{id}/dressmaker")]
-        public void Put(int id, [FromBody] Dressmaker value)
+
+        public IActionResult Put(int id, [FromBody] Dressmaker value)
         {
-            Bridal bridal = bridals.Find(bri => bri.Id == id);
-            if (bridal != null)
-            {
-                bridal.dressmaker = value;   
-            }
+            return Ok(_BridalService.UpdateBridal(id, value));
         }
         [HttpPut("{id}/date")]
-        public void Put(int id, [FromBody] DateTime value)
+       
+        public IActionResult Put(int id, [FromBody] DateTime value)
         {
-            Bridal bridal = bridals.Find(bri => bri.Id == id);
-            if (bridal != null)
-            {
-                bridal.DateWedding=value;
-            }
+            return Ok(_BridalService.UpdateBridal(id, value));
         }
 
         // DELETE api/<BridalController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            Bridal bridal = bridals.Find(bri => bri.Id == id);
-            if(bridal!=null)
-                bridals.Remove(bridal);
+            _BridalService.DeleteBridal(id);
         }
     }
 }

@@ -3,7 +3,7 @@
     public class QueueBridal
     {
         public int Id { get; set; }
-        public Bridal bridal{ get; set; }
+        public BridalClass bridal{ get; set; }
         public DateTime DateQueue { get; set; }
     }
 }

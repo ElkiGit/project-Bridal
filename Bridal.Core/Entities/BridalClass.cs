@@ -1,6 +1,6 @@
 ﻿namespace Bridal.Core.Entities
 {
-    public class Bridal
+    public class BridalClass
     {
         public int Id { get; set; }
         public string Name { get; set; }

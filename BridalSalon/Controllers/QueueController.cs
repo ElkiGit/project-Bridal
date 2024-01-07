@@ -1,4 +1,6 @@
-﻿using BridalSalon.Entities;
+﻿
+using Bridal.Core.Entities;
+using Bridal.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,55 +11,51 @@ namespace BridalSalon.Controllers
     [ApiController]
     public class QueueController : ControllerBase
     {
-        private static int counter = 1;
-        private static List<QueueBridal> queues = new List<QueueBridal> { };
-        // GET: api/<QueueController>
-        [HttpGet]
-        public IEnumerable<QueueBridal> Get()
+        private readonly IQueueBridalServices _queueBridalServices;
+        public QueueController(IQueueBridalServices queueBridalServices)
         {
-            return queues;
+            _queueBridalServices = queueBridalServices;
         }
-        
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_queueBridalServices.GetQueue());
+        }
+
 
         // GET api/<QueueController>/5
         [HttpGet("{id}")]
-        public QueueBridal Get(int id)
+        public IActionResult Get(int id)
         {
-            return queues.Find(q=>q.Id==id);
+            return Ok(_queueBridalServices.GetQueueById(id));
         }
 
         // POST api/<QueueController>
         [HttpPost]
-        public void Post([FromBody] QueueBridal value)
-        { 
-            value.Id = ++counter;
-            queues.Add(value);
+        public IActionResult Post([FromBody] QueueBridal value)
+        {
+           return Ok(_queueBridalServices.AddQueue(value));
         }
 
         // PUT api/<QueueController>/5
         [HttpPut("{id}/date")]
-        public void Put(int id, [FromBody] DateTime value)
+        public IActionResult Put(int id, [FromBody] DateTime value)
         {
-            QueueBridal q = queues.Find(q => q.Id == id);
-            if (q != null)
-                q.DateQueue=value;
+           return Ok(_queueBridalServices.UpdetQueue(id, value));
         }
         [HttpPut("{id}/bridal")]
-        public void Put(int id, [FromBody] Bridal value)
+        public IActionResult Put(int id, [FromBody] BridalClass value)
         {
-            QueueBridal q = queues.Find(q => q.Id == id);
-            if (q != null)
-                q.bridal = value;
+            return Ok(_queueBridalServices.UpdetQueue(id, value));
         }
-      
+
 
         // DELETE api/<QueueController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            QueueBridal q=queues.Find(q => q.Id == id);
-            if(q!=null)
-                queues.Remove(q);
+            _queueBridalServices.DeleteQueue(id);
         }
     }
 }
